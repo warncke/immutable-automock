@@ -1,0 +1,26 @@
+{
+  "author": "Ersun Warncke <ersun.warncke@gmail.com>",
+  "dependencies": {
+    "immutable-require-valid-optional-object": "^0.1.0",
+    "lodash": "^4.17.2",
+    "stable-id": "^0.2.0"
+  },
+  "description": "Automatic mocking for immutable framework",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "immutable-core": "^0.3.2",
+    "mocha": "^3.0.2"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "license": "MIT",
+  "main": "lib/immutable-automock.js",
+  "name": "immutable-automock",
+  "repository": "warncke/immutable-automock",
+  "scripts": {
+    "test": "mocha"
+  },
+  "version": "0.1.0"
+}

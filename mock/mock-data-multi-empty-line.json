@@ -1,0 +1,5 @@
+{"type":"moduleCall","data":{"args":{"session":{"stack":[],"moduleCallCreateTime":"2016-11-23 08:41:40.471473","moduleCallId":"DEAE84F389805341C711CD8584D24C96"}},"functionName":"foo","moduleCallCreateTime":"2016-11-23 08:41:40.471473","moduleCallId":"DEAE84F389805341C711CD8584D24C96","moduleName":"FooModule"}}
+{"type":"moduleCall","data":{"args":{"session":{"stack":["FooModule.foo"],"moduleCallCreateTime":"2016-11-23 08:41:40.473043","moduleCallId":"68FB28D10EDD3427300594C2B02D9750"}},"functionName":"bar","moduleCallCreateTime":"2016-11-23 08:41:40.473043","moduleCallId":"68FB28D10EDD3427300594C2B02D9750","moduleName":"FooModule"}}
+
+{"type":"moduleCallResolve","data":{"moduleCallId":"68FB28D10EDD3427300594C2B02D9750","moduleCallResolveData":true,"resolved":1,"moduleCallResolveCreateTime":"2016-11-23 08:41:40.473619"}}
+{"type":"moduleCallResolve","data":{"moduleCallId":"DEAE84F389805341C711CD8584D24C96","moduleCallResolveData":true,"resolved":1,"moduleCallResolveCreateTime":"2016-11-23 08:41:40.473759"}}
