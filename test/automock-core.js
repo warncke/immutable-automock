@@ -26,7 +26,7 @@ describe('immutable-automock: core', function () {
             },
         })
         // check that foo is wrapped with automock function
-        assert.match(fooModule.foo.toString(), /automockWrapper/)
+        assert.match(fooModule.foo.toString(), /coreAutomockWrapper/)
     })
 
     it('should call original method when no mock data is loaded', function () {

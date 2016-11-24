@@ -9,7 +9,9 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",
+    "http-promise": "^0.1.4",
     "immutable-core": "^0.3.2",
+    "immutable-http-client": "^0.3.0",
     "mocha": "^3.0.2"
   },
   "directories": {
@@ -22,5 +24,5 @@
   "scripts": {
     "test": "mocha"
   },
-  "version": "0.1.1"
+  "version": "0.3.0"
 }
