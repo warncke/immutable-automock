@@ -75,6 +75,26 @@ describe('immutable-automock: http-client', function () {
         })
     })
 
+    it('should throw error when requireMock flag is set and no mock data is loaded', function () {
+        // should throw error
+        assert.throws(function () {
+            httpClient.get(testUrl, {}, {
+                requireAutomock: true
+            })
+        }, Error)
+        // validate error data
+        try {
+            httpClient.get(testUrl, {}, {
+                requireAutomock: true
+            })
+        }
+        catch (ex) {
+            // require error to have automock call data
+            assert.isOk(ex.automockCallData)
+            assert.isOk(ex.automockStableId)
+        }
+    })
+
     it('should mock successful http request error', function () {
         // build mock data from log client
         var mockData = []

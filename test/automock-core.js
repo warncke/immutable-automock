@@ -50,6 +50,43 @@ describe('immutable-automock: core', function () {
         })
     })
 
+    it('should throw error when requireMock flag is set and no mock data is loaded', function () {
+        // reset global singleton data
+        immutable.reset().strictArgs(false)
+        // apply automock
+        automock.reset().mock()
+        // will be set true when method called
+        var methodCalled = false
+        // create FooModule
+        var fooModule = immutable.module('FooModule', {
+            // foo method returns valid Promise
+            foo: function (args) {
+                methodCalled = true
+            },
+        })
+        // method should throw error
+        assert.throws(function () {
+            fooModule.foo({
+                session: {
+                    requireAutomock: true
+                }
+            })
+        }, Error)
+        // validate error data
+        try {
+            fooModule.foo({
+                session: {
+                    requireAutomock: true
+                }
+            })
+        }
+        catch (ex) {
+            // require error to have automock call data
+            assert.isOk(ex.automockCallData)
+            assert.isOk(ex.automockStableId)
+        }
+    })
+
     it('should return mock data and not call original method when mock data loaded', function () {
         // build mock data from log client
         var mockData = []
