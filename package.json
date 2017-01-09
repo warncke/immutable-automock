@@ -13,7 +13,8 @@
     "immutable-core": "^0.4.2",
     "immutable-database-mariasql": "^0.4.0",
     "immutable-http-client": "^0.3.0",
-    "mocha": "^3.0.2"
+    "mocha": "^3.0.2",
+    "require-reload": "^0.2.2"
   },
   "directories": {
     "test": "test"
@@ -25,5 +26,5 @@
   "scripts": {
     "test": "mocha"
   },
-  "version": "0.5.3"
+  "version": "0.6.0"
 }

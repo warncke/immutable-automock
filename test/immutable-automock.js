@@ -7,17 +7,21 @@ const automock = require('../lib/immutable-automock')
 const chai = require('chai')
 const chaiAsPromised = require('chai-as-promised')
 const immutable = require('immutable-core')
+const reload = require('require-reload')(require)
 
 chai.use(chaiAsPromised)
 const assert = chai.assert
 
 describe('immutable-automock', function () {
 
-    it('should load single line array of mock data from file', function () {
+    beforeEach(function () {
         // reset global singleton data
         immutable.reset().strictArgs(false)
         // reset and apply automock
         automock.reset().mock()
+    })
+
+    it('should load single line array of mock data from file', function () {
         // load mock data from file
         automock.loadMockFromFile(__dirname+'/../mock/mock-data-single.json')
         // flags set when methods are called
@@ -44,10 +48,6 @@ describe('immutable-automock', function () {
     })
 
     it('should load multi line mock data from file', function () {
-        // reset global singleton data
-        immutable.reset().strictArgs(false)
-        // reset and apply automock
-        automock.reset().mock()
         // load mock data from file
         automock.loadMockFromFile(__dirname+'/../mock/mock-data-multi.json')
         // flags set when methods are called
@@ -73,11 +73,41 @@ describe('immutable-automock', function () {
         })
     })
 
+    it('should persist mock data globally', function () {
+        // load mock data from file
+        automock.loadMockFromFile(__dirname+'/../mock/mock-data-multi.json')
+        // global data should be defined
+        assert.isOk(global.__immutable_automock__)
+        // get reference to global data store
+        var immutableAutomock = global.__immutable_automock__
+        // reload module
+        reload('../lib/immutable-automock')
+        // global data should be persisted
+        assert.deepEqual(global.__immutable_automock__, immutableAutomock)
+        // flags set when methods are called
+        var fooCalled = false
+        // create FooModule
+        var fooModule = immutable.module('FooModule', {
+            bar: function (args) {
+                return Promise.resolve(true)
+            },
+            foo: function (args) {
+                fooCalled = true
+                return fooModule.bar(args)
+            },
+        })
+        // call method which should be mocked
+        return fooModule.foo()
+        // test results of mocked call
+        .then(function (res) {
+            // test that response is correct
+            assert.strictEqual(res, true)
+            // test that neither original method was called
+            assert.strictEqual(fooCalled, false)
+        })
+    })
+
     it('should clear global mock data when reset called', function () {
-        // reset global singleton data
-        immutable.reset().strictArgs(false)
-        // reset and apply automock
-        automock.reset().mock()
         // load mock data from file
         automock.loadMockFromFile(__dirname+'/../mock/mock-data-single.json')
         // flags set when methods are called
