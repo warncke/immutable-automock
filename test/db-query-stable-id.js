@@ -19,18 +19,6 @@ describe('immutable-automock: db query stable id', function () {
         assert.notStrictEqual(dbQueryStableId(dbQueryData1), dbQueryStableId(dbQueryData2))
     })
 
-    it('should generate different ids for queries with the same query strings and different moduleCallIds', function () {
-        var dbQueryData1 = {
-            moduleCallId: 'FOO',
-            query: 'FOO',
-        }
-        var dbQueryData2 = {
-            moduleCallId: 'BAR',
-            query: 'FOO',
-        }
-        assert.notStrictEqual(dbQueryStableId(dbQueryData1), dbQueryStableId(dbQueryData2))
-    })
-
     it('should generate different ids for queries with the same query strings and different options', function () {
         var dbQueryData1 = {
             options: {
@@ -73,6 +61,45 @@ describe('immutable-automock: db query stable id', function () {
             requestId: 'BAR',
         }
         assert.notStrictEqual(dbQueryStableId(dbQueryData1), dbQueryStableId(dbQueryData2))
+    })
+
+    it('should generate different ids for queries with the same query strings and different moduleCallSignatures', function () {
+        var dbQueryData1 = {
+            query: 'FOO',
+            moduleCallSignature: 'FOO.bar',
+        }
+        var dbQueryData2 = {
+            query: 'FOO',
+            moduleCallSignature: 'BAR.bar',
+        }
+        assert.notStrictEqual(dbQueryStableId(dbQueryData1), dbQueryStableId(dbQueryData2))
+    })
+
+    it('should generate different ids for queries with the same query strings and moduleCallSignatures but different stacks', function () {
+        var dbQueryData1 = {
+            query: 'FOO',
+            moduleCallSignature: 'FOO.bar',
+            stack: ['foo'],
+        }
+        var dbQueryData2 = {
+            query: 'FOO',
+            moduleCallSignature: 'FOO.bar',
+            stack: ['bar'],
+        }
+        assert.notStrictEqual(dbQueryStableId(dbQueryData1), dbQueryStableId(dbQueryData2))
+    })
+
+
+    it('should generate the same id for queries with the same query strings and different moduleCallIds', function () {
+        var dbQueryData1 = {
+            moduleCallId: 'FOO',
+            query: 'FOO',
+        }
+        var dbQueryData2 = {
+            moduleCallId: 'BAR',
+            query: 'FOO',
+        }
+        assert.strictEqual(dbQueryStableId(dbQueryData1), dbQueryStableId(dbQueryData2))
     })
 
     it('should generate the same id for queries with the same query strings', function () {
@@ -173,6 +200,32 @@ describe('immutable-automock: db query stable id', function () {
         var dbQueryData2 = {
             dbQueryId: 'BAR',
             query: 'FOO',
+        }
+        assert.strictEqual(dbQueryStableId(dbQueryData1), dbQueryStableId(dbQueryData2))
+    })
+
+    it('should generate the same id for queries with the same query strings and moduleCallSignatures', function () {
+        var dbQueryData1 = {
+            query: 'FOO',
+            moduleCallSignature: 'FOO.bar',
+        }
+        var dbQueryData2 = {
+            query: 'FOO',
+            moduleCallSignature: 'FOO.bar',
+        }
+        assert.strictEqual(dbQueryStableId(dbQueryData1), dbQueryStableId(dbQueryData2))
+    })
+
+    it('should generate the same id for queries with the same query strings. moduleCallSignatures, and stacks', function () {
+        var dbQueryData1 = {
+            query: 'FOO',
+            moduleCallSignature: 'FOO.bar',
+            stack: ['foo'],
+        }
+        var dbQueryData2 = {
+            query: 'FOO',
+            moduleCallSignature: 'FOO.bar',
+            stack: ['foo'],
         }
         assert.strictEqual(dbQueryStableId(dbQueryData1), dbQueryStableId(dbQueryData2))
     })
