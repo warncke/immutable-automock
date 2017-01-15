@@ -10,7 +10,7 @@
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",
     "http-promise": "^0.1.4",
-    "immutable-core": "^0.4.2",
+    "immutable-core": "^0.4.3",
     "immutable-database-mariasql": "^0.4.0",
     "immutable-http-client": "^0.3.0",
     "mocha": "^3.0.2",
@@ -26,5 +26,5 @@
   "scripts": {
     "test": "mocha"
   },
-  "version": "0.7.0"
+  "version": "0.7.1"
 }
