@@ -1,30 +1,33 @@
 {
   "author": "Ersun Warncke <ersun.warncke@gmail.com>",
   "dependencies": {
-    "immutable-require-valid-optional-object": "^0.1.0",
-    "lodash": "^4.17.2",
-    "stable-id": "^0.2.0"
+    "immutable-require-valid-optional-object": "0.1.0",
+    "lodash": "4.17.4",
+    "stable-id": "0.2.0"
   },
   "description": "Automatic mocking for immutable framework",
   "devDependencies": {
-    "chai": "^3.5.0",
-    "chai-as-promised": "^6.0.0",
-    "http-promise": "^0.1.4",
-    "immutable-core": "^0.4.3",
-    "immutable-database-mariasql": "^0.4.0",
-    "immutable-http-client": "^0.3.0",
-    "mocha": "^3.0.2",
-    "require-reload": "^0.2.2"
+    "chai": "3.5.0",
+    "chai-as-promised": "6.0.0",
+    "http-promise": "0.1.4",
+    "immutable-core": "1.1.3",
+    "immutable-database-mariasql": "1.1.0",
+    "immutable-http-client": "0.3.0",
+    "mocha": "3.2.0",
+    "require-reload": "0.2.2"
   },
   "directories": {
     "test": "test"
+  },
+  "engines": {
+    "node": ">=7.0.0"
   },
   "license": "MIT",
   "main": "lib/immutable-automock.js",
   "name": "immutable-automock",
   "repository": "warncke/immutable-automock",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --harmony-async-await"
   },
-  "version": "0.7.1"
+  "version": "1.0.0"
 }
