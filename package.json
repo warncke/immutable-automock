@@ -11,8 +11,8 @@
     "chai-as-promised": "6.0.0",
     "http-promise": "0.1.4",
     "immutable-core": "1.2.10",
-    "immutable-database-mariasql": "1.2.10",
-    "immutable-http-client": "0.4.10",
+    "immutable-database-mariasql": "1.2.11",
+    "immutable-http-client": "0.4.11",
     "mocha": "3.2.0",
     "require-reload": "0.2.2"
   },
@@ -29,5 +29,5 @@
   "scripts": {
     "test": "mocha --harmony-async-await"
   },
-  "version": "1.0.11"
+  "version": "1.0.12"
 }
