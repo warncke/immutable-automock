@@ -6,7 +6,7 @@ const moduleCallStableId = require('../lib/automock/core').moduleCallStableId
 describe('immutable-automock: module call stable id', function () {
 
     it('should generate a 128bit hex id', function () {
-        assert.match(moduleCallStableId({}), /^[0-9A-Z]{32}$/)
+        assert.match(moduleCallStableId({}), /^[0-9a-z]{32}$/)
     })
 
     it('should generate different ids for calls with different args', function () {

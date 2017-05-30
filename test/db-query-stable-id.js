@@ -6,7 +6,7 @@ const dbQueryStableId = require('../lib/automock/db-client').dbQueryStableId
 describe('immutable-automock: db query stable id', function () {
 
     it('should generate a 128bit hex id', function () {
-        assert.match(dbQueryStableId({}), /^[0-9A-Z]{32}$/)
+        assert.match(dbQueryStableId({}), /^[0-9a-z]{32}$/)
     })
 
     it('should generate different ids for queries with different query strings', function () {
