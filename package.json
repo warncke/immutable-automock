@@ -7,7 +7,7 @@
   },
   "description": "Automatic mocking for immutable framework",
   "devDependencies": {
-    "chai": "4.0.0",
+    "chai": "4.0.1",
     "chai-as-promised": "6.0.0",
     "http-promise": "0.1.4",
     "immutable-core": "1.4.1",
@@ -20,14 +20,14 @@
     "test": "test"
   },
   "engines": {
-    "node": ">=7.0.0"
+    "node": ">=7.6.0"
   },
   "license": "MIT",
   "main": "lib/immutable-automock.js",
   "name": "immutable-automock",
   "repository": "warncke/immutable-automock",
   "scripts": {
-    "test": "mocha --harmony-async-await"
+    "test": "mocha"
   },
   "version": "1.1.5"
 }
